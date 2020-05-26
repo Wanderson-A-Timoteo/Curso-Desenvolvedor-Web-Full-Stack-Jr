@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Aula 15 - Dados Estruturados | Formação Desenvolvedor Web Full-Stack Essencial</title>		
+		<meta name="description" content="Aprenda nessa aula a criar dados estruturados para o seu site e entenda os benefícios gerados para a indexação de conteúdo." />	
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+		
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		
+		<style>
+		
+			@import url('https://fonts.googleapis.com/css?family=Roboto');
+		
+			*{
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				font-family: 'Roboto', sans-serif;
+			}
+			
+		
+		
+			main {
+				width: 100%;
+				max-width:1290px;
+				margin:auto;
+				
+				margin-top:15px;
+			}
+
+			.destaque{
+				padding: 1em;
+				color: #fff;
+				background-color: #0a4f5f;
+				text-align: center;
+			}
+			
+			nav {
+				float:left;
+				padding: 1em;
+				width:20%;
+			}
+
+			nav ul {
+				list-style-type: none;
+				padding: 0;
+			}
+			   
+			nav ul a {
+				text-decoration: none;
+				background-color:#e0e0e0;
+				display:block;
+				padding:8px;
+				margin-bottom:4px;
+				color:#0a4f5f;
+				border-radius:3px;
+			}
+			
+			nav ul a:hover {
+				background-color:#d5d5d5;
+			}
+
+			#conteudo {
+				border-left: 1px solid #c0c0c0;
+				padding: 1em;
+				float:right;
+				width:80%;
+			}
+			
+			#conteudo p{
+				margin:15px 0;
+			}
+			
+			main > footer{
+				clear:both
+			}
+			
+			@media (max-width: 600px){
+				nav, #conteudo{width:100%}
+			}
+			
+			form{
+				background-color:#e0e0e0;
+				padding:20px;
+			}
+			
+			form *{
+				margin:5px 0
+			}
+			
+			form input{
+				padding:10px 15px;
+				border:none;
+				width:100%
+			}
+			
+			form button{
+				padding:10px 15px
+			}
+			
+			#msg{
+				text-align:center;
+				background-color:#bfff84;
+				padding: 1em;
+				display:none;
+			}
+			
+			.evento{
+				padding:20px
+			}
+			
+			.banner{
+				width:100%
+			}
+			
+				
+		</style>
+		
+		
+
+		<script type="application/ld+json">
+			{
+			  "@context": "http://schema.org",
+			  "@type": "Event",
+			  "name": "Encontro de Programadores Web SP (Evento fictício)",
+			  "startDate": "2018-03-21",
+			  "location": {
+				"@type": "Place",
+				"name": "Edifício X Innovation",
+				"address": {
+				  "@type": "PostalAddress",
+				  "streetAddress": "Av. Paulista, 5412, Centro",
+				  "addressLocality": "São Paulo",
+				  "postalCode": "01310200",
+				  "addressRegion": "SP",
+				  "addressCountry": "Brasil"
+				}
+			  },
+			  "image": [
+				"https://encontroprogramadoressp217.net/img/evento.jpg"
+			   ],
+			  "description": "O Encontro de Programadores Web SP ocorre todo ano na cidade de São Paulo e conta com os principais feras da área.",
+			  "endDate": "2018-03-25",
+			  "offers": {
+				"@type": "Offer",
+				"url": "https://encontroprogramadoressp217.net/comprar",
+				"price": "150",
+				"priceCurrency": "REAL",
+				"availability": "http://schema.org/InStock",
+				"validFrom": "2018-03-10"
+			  },
+			  "performer": {
+				"@type": "PerformingGroup",
+				"name": "Web Dev Brasil"
+			  }
+			}
+		</script>
+		
+
+		
+	</head>
+	
+	<body>
+		
+
+	
+		<main>
+		
+			<header class="destaque">
+			   <h1>Formação Desenvolvedor Web Full-Stack Essencial</h1>
+			</header>
+		
+			<nav>
+				<ul>
+					<li><a href="http://localhost/formacao-web/aula15"><i class="fab fa-php"></i> Dados Estruturados</a></li>
+					<li><a href="http://localhost/formacao-web/aula16"><i class="fas fa-code"></i> Páginas AMP</a></li>
+				</ul>
+			</nav>
+
+			<article id="conteudo">
+				<header class="destaque">
+					<h2>Aula 15 - Dados Estruturados</h2>
+				</header>
+				<p>Aprenda nessa aula a criar dados estruturados para o seu site e entenda os benefícios gerados para a indexação de conteúdo.</p>
+				
+				<div>
+					<h3>Encontro de Programadores Web SP (Evento fictício)</h3>
+					<br>
+					<img src="evento.jpg" class="banner" alt="Encontro de Programadores Web SP (Evento fictício)">
+					<ul class="evento">
+						<li>21 até 25 de março de 2018</li>
+						<li>O Encontro de Programadores Web SP ocorre todo ano na cidade de São Paulo e conta com os principais feras da área.</li>
+						<li>Edifício X Innovation, Av. Paulista, 5412, Centro - São Paulo SP Brasil</li>
+						<li><a href="https://encontroprogramadoressp217.net/comprar">R$ 150,00 (até 10 de março de 2018)</a></li>
+						<li>Palestra com equipe Web Dev Brasil</li>
+					</ul>
+				</div>
+				
+			</article>
+			
+			<footer class="destaque">Copyright &copy; Formação Desenvolvedor Web Full-Stack Essencial</footer>
+
+			<div id="msg"></div>
+			
+		</main>
+
+
+		
+	</body>
+</html>

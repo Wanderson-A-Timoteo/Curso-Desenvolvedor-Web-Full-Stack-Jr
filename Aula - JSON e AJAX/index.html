@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Aula 13 - JSON | Formação Desenvolvedor Web Full-Stack Essencial</title>		
+		<meta name="description" content="Aprenda nessa aula a criar um sistema de pesquisa em banco de dados MySQL com AJAX e recuperação de dados em formato JSON." />	
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+		
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		
+		<style>
+		
+			@import url('https://fonts.googleapis.com/css?family=Roboto');
+		
+			*{
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				font-family: 'Roboto', sans-serif;
+			}
+			
+		
+		
+			main {
+				width: 100%;
+				max-width:1290px;
+				margin:auto;
+				
+				margin-top:15px;
+			}
+
+			.destaque{
+				padding: 1em;
+				color: #fff;
+				background-color: #0a4f5f;
+				text-align: center;
+			}
+			
+			nav {
+				float:left;
+				padding: 1em;
+				width:20%;
+			}
+
+			nav ul {
+				list-style-type: none;
+				padding: 0;
+			}
+			   
+			nav ul a {
+				text-decoration: none;
+				background-color:#e0e0e0;
+				display:block;
+				padding:8px;
+				margin-bottom:4px;
+				color:#0a4f5f;
+				border-radius:3px;
+			}
+			
+			nav ul a:hover {
+				background-color:#d5d5d5;
+			}
+
+			#conteudo {
+				border-left: 1px solid #c0c0c0;
+				padding: 1em;
+				float:right;
+				width:80%;
+			}
+			
+			#conteudo p{
+				margin:15px 0;
+			}
+			
+			main > footer{
+				clear:both
+			}
+			
+			@media (max-width: 600px){
+				nav, #conteudo{width:100%}
+			}
+			
+			form{
+				background-color:#e0e0e0;
+				padding:20px;
+			}
+			
+			form *{
+				margin:5px 0
+			}
+			
+			form input{
+				padding:10px 15px;
+				border:none;
+				width:100%
+			}
+			
+			form button{
+				padding:10px 15px
+			}
+			
+			#msg{
+				text-align:center;
+				background-color:#bfff84;
+				padding: 1em;
+				display:none;
+			}
+				
+		</style>
+		
+		
+	</head>
+	
+	<body>
+		
+
+	
+		<main>
+		
+			<header class="destaque">
+			   <h1>Formação Desenvolvedor Web Full-Stack Essencial</h1>
+			</header>
+		
+			<nav>
+				<ul>
+					<li><a href="http://localhost/formacao-web/aula10"><i class="fab fa-php"></i> PHP</a></li>
+					<li><a href="http://localhost/formacao-web/aula11"><i class="fas fa-code"></i> XML</a></li>
+					<li><a href="http://localhost/formacao-web/aula12"><i class="fas fa-database"></i> MySQL</a></li>
+					<li><a href="http://localhost/formacao-web/aula13"><i class="fas fa-exchange-alt"></i> JSON</a></li>
+					<li><a href="https://br.wordpress.com"><i class="fab fa-wordpress"></i> WordPress</a></li>
+				</ul>
+			</nav>
+
+			<article id="conteudo">
+				<header class="destaque">
+					<h2>Aula 13 - JSON</h2>
+				</header>
+				<p>Aprenda nessa aula a criar um sistema de pesquisa em banco de dados MySQL com AJAX e recuperação de dados em formato JSON.</p>
+				<form id="form">
+					<input type="hidden" name="form" value="OK">
+					Nome do Filme:<br>
+					<input type="text" name="nome-filme" id="nome-filme"><br>
+					<button type="submit" value="Buscar">Buscar</button>
+				</form>
+				
+			</article>
+			
+			<footer class="destaque">Copyright &copy; Formação Desenvolvedor Web Full-Stack Essencial</footer>
+
+			<div id="msg"></div>
+			
+		</main>
+
+		
+		<script>
+		
+
+		
+			document.getElementById('form').addEventListener("submit", function(event) {
+				event.preventDefault();
+				
+				document.getElementById('msg').style.display = 'none';
+				
+				nome_filme = document.getElementById('nome-filme').value;
+				
+				if(nome_filme != ""){
+					
+					
+					var xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function() {
+						
+
+					
+						if (this.readyState == 4 && this.status == 200) {
+							
+							if(this.responseText == 0){
+								document.getElementById('msg').style.display = 'block';
+								document.getElementById('msg').style.backgroundColor = '#ffb1b1';
+								document.getElementById('msg').innerHTML = "<i class='fas fa-exclamation-circle'></i> Ops, nenhum filme encontrado.";
+							}else{
+								console.log(this.responseText);
+							
+								filmes = JSON.parse(this.responseText);
+								saida = "";
+								for (i = 0; i < filmes.length; i++) { 
+									saida += 'Filme: ' + filmes[i].nome + " | Tempo: " + filmes[i].tempo + "<br>";
+								}
+								document.getElementById('msg').style.display = 'block';
+								document.getElementById('msg').style.backgroundColor = '#bfff84';
+								document.getElementById('msg').innerHTML = saida;
+							}
+			
+
+						}
+					};
+					xmlhttp.open("GET", "ajax.php?busca=" + nome_filme, true);
+					xmlhttp.send();
+					
+					
+					
+					
+				}else{
+					alert("Preencha corretamente todos os campos");
+				}
+			});
+			
+
+
+		
+		
+		</script>
+		
+	</body>
+</html>

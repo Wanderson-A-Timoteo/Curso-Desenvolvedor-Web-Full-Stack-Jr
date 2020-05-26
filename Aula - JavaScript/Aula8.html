@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Aula 8 - JavaScript | Formação Desenvolvedor Web Full-Stack Essencial</title>		
+		<meta name="description" content="Como criar websites interativos e inteligentes através da linguagem JavaScript e suas funcionalidades." />	
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		
+		<style>
+
+			/* script acima esta sendo referenciado para JavaScript no site "Font Awesome", diferente da aula 7 que estava sendo referenciada para CSS*/
+
+			/*INICIANDO A DEFINIÇÃO DO <style> CSS DO CODIGO*/
+
+			/*Esta sendo importada uma fonte do "Google Fonts" neste caso é a fonte "Roboto".
+				Podemos usar outros tipos de fontes diferentes, basta escolher o tipo no Google Fonts
+			*/
+			@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+			/* O (*) é um corringa, pois ele se refere a todos os elementos da pagina, ou seja,
+			Tudo no site será padronizado com as especificações que forem definidas dentro de (*).
+			*/
+			*{
+				padding: 0;/* Padding se refere a formatação das letras dentro da caixa, div, nav, article e outros, Foi zerado para tratar no CSS */
+				margin: 0;/* Margin se refere a formatação dos espaços entre as caixas, div, nav, article e outros, Foi zerado para tratar no CSS */
+				box-sizing: border-box;
+				font-family: 'Roboto', sans-serif;/*Chamada para o tipo de fonte Roboto */
+			}
+
+
+
+			/* Tudo dentro da tag main ficará com as especificações  que forem definidas abaixo */
+			main {
+				width: 100%;/* Definindo a largura em 100% deixa o site, responsivo se enquadrando em todas as telas de dispositivos diferentes */
+				max-width:1290px;/* Definindo a largura maxima em 1290, ou seja, mesmo em uma tela muito grande será renderizado a largura max 1290px */
+				margin:auto;
+				margin-top:15px;/* Definindo a margem de cima em 15 pixels */
+			}
+
+			/* (class "destaque" é um seletor em CSS, e para definir suas especificações precisamos iniciar com um (.) )
+			No codigo foi usada a class "destaque" em varias parte para tornar o codigo reutilizavel
+			 	e assim todas as especificações abaixo seram aplicadas em todas as class de nome "destaque"
+			 */
+			.destaque{
+				padding: 1em;/* Assim como (px), (em) é uma medida, o px não é uma unidade variavel, ou seja independente
+				do dispositivo ele vai ter o mesmo comportamento. Ja (em) é uma unidade tipo grafica baseada na letra M,
+				com (em) significa que eles são relativos ao tamanho da fonte e se o usuário tem uma fonte grande
+				 (ex. uma tela grande) ou uma fonte pequena (ex. dispositivo handheld) , os tamanhos serão proporcionais.
+				 1em é aproximadamente 16px
+				 */
+				color: #fff;
+				background-color: #0a4f5f;
+				text-align: center;
+			}
+
+			/* Definindo as especificações  para nav, ou seja, para o menu */
+			nav {
+				float:left;/* Define o menu como flutuante a esquerda */
+				padding: 1em;/* Define o espaçamento do menu */
+				width:20%;/* Define o tamanho da largura do menu  */
+			}
+
+			nav ul {
+				list-style-type: none;
+				padding: 0;
+			}
+			   
+			nav ul a {
+				text-decoration: none;
+				background-color:#e0e0e0;/* Definindo a cor de fundo do menu */
+				display:block;/* O elemento (a) é por padrão display:inlime, porém estamos definindo ele como display:block
+								para que ele ocupe a largura inteira do conteiner */
+				padding:8px; /* Definindo o espaço do texto até a borda, ou seja de dentro pra fora */
+				margin-bottom:4px;/* Definindo o espaço de um link "HTML, CSS, JAVASCRIP" pro outro */
+				color:#0a4f5f;/* Definindo a cor da letra */
+				border-radius:3px; /* Definindo uma borda aredondade de 3px */
+			}
+
+			/* Esta função "nav ul a:houver" -> altera a cor do elemento quando passamos o mouse por cima */
+			nav ul a:hover {
+				background-color:#d5d5d5;
+			}
+
+			/* ( "id=conteudo" é outro seletor em CSS, e para definir suas especificações precisamos iniciar com um (#) )
+			No codigo foi usada o "id=conteudo" ele é um identificador unico. Em varias partes do codigo foi usada e para
+			tornar o codigo reutilizavel, todas as especificações abaixo seram aplicadas em todas as id de nome "conteudo"
+			Somente um elemento por pagina pode ter um id especifico, porém podemos ter id diferentes na mesma pagina
+			 */
+			#conteudo {
+				border-left: 1px solid #c0c0c0;/* Definindo uma borda left = esquerda */
+				padding: 1em;/* Define o espaçamento do conteudo */
+				float:right;/* Devido o menu estar float left = flutuando a esquerda, neste caso o conteudo foi definido a right=direita */
+				width:80%;/* largura do conteudo em 80% pois a nav=menu foi definida em 20% */
+			}
+
+			/* Define p, ou seja, o paragrafo */
+			#conteudo p{
+				margin:15px 0;
+			}
+			
+			main > footer{
+				clear:both /* Define o rodape limpando o float=flutuando, tornando ele novamente como um bloco,
+				sem isso o footer fica flutuando na parte de cima do site*/
+			}
+
+			/* Define a responsividade do site para qualquer dispositivo, neste caso dizendo que enquanto a resolução do
+			dispositivo for no maximo de largura 600px, o que existir em nav=menu que é 20% e em #conteudo que é 80%,
+			ocupara 100% da largura da tela, ou seja, tanto o menu quanto o conteudo ocupara toda a tela do dispositivo*/
+			@media (max-width: 600px){
+				nav, #conteudo{width:100%}
+			}
+			
+			form{
+				background-color:#e0e0e0;
+				padding:20px;
+			}
+			
+			form *{
+				margin:5px 0
+			}
+			
+			form input{
+				padding:10px 15px;
+				border:none;
+				width:100%
+			}
+			
+			form button{
+				padding:10px 15px
+			}
+			
+			#msg{
+				text-align:center;
+				background-color:#bfff84;
+				padding: 1em;
+				display:none;
+			}
+
+			/*FIM DA DEFINIÇÃO DO <style> CSS DO CODIGO*/
+		</style>
+		
+		
+	</head>
+	
+	<body>
+		
+
+	
+		<main>
+		
+			<header class="destaque">
+			   <h1>Formação Desenvolvedor Web Full-Stack Essencial</h1>
+			</header>
+		
+			<nav>
+				<ul>
+					<li><a href="http://localhost/formacao-web/aula6"><i class="fab fa-html5"></i> HTML</a></li>
+					<li><a href="http://localhost/formacao-web/aula7"><i class="fab fa-css3-alt"></i> CSS</a></li>
+					<li><a href="http://localhost/formacao-web/aula8"><i class="fab fa-js-square"></i> JavaScript</a></li>
+					<li><a href="https://getbootstrap.com"><i class="far fa-object-group"></i> Bootstrap + jQuery</a></li>
+				</ul>
+			</nav>
+
+			<article id="conteudo">
+				<header class="destaque">
+					<h2>Aula 8 - JavaScript</h2>
+				</header>
+				<p>Como criar websites interativos e inteligentes através da linguagem JavaScript e suas funcionalidades.</p>
+				<form id="form">
+					<input type="hidden" name="form" value="OK">
+					Nome do Filme:<br>
+					<input type="text" name="nome-filme" id="nome-filme"><br>
+					Tempo do Filme (min):<br>
+					<input type="number" name="tempo-filme" id="tempo-filme"><br>
+					<button type="submit" value="Enviar">Enviar</button>
+				</form>
+				
+			</article>
+			
+			<footer class="destaque">Copyright &copy; Formação Desenvolvedor Web Full-Stack Essencial</footer>
+
+			<div id="msg"></div>
+			
+		</main>
+
+		
+		<script>
+		
+
+		
+			document.getElementById('form').addEventListener("submit", function(event) {
+				event.preventDefault();
+				
+				nome_filme = document.getElementById('nome-filme').value;
+				tempo_filme = document.getElementById('tempo-filme').value;
+				
+				if(nome_filme != "" && tempo_filme != ""){
+					this.submit();
+				}else{
+					alert("Preencha corretamente todos os campos");
+				}
+			});
+			
+
+			function pegarGet(url){
+				qs = url.slice(url.indexOf('?')+1);
+				qss = qs.split('&');
+				return qss;
+			}
+			
+			parametros = pegarGet(window.location.href);
+			
+			console.log(decodeURIComponent(parametros[1].split("=")[1]));
+			
+			controle = parametros[0].split("=")[1];
+			filme = decodeURIComponent(parametros[1].split("=")[1]);
+			tempo = parametros[2].split("=")[1];
+
+			if(controle == 'OK'){
+				document.getElementById('msg').style.display = 'block';
+				document.getElementById('msg').innerHTML = "<i class='fas fa-check'></i> Você enviou os dados do filme [ " + filme + " ] que tem [ " + tempo + " ] minutos de duração";
+			}
+
+		
+		
+		</script>
+		
+	</body>
+</html>
