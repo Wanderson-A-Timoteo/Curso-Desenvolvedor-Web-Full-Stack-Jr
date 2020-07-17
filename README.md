@@ -1,7 +1,7 @@
 # Curso-Desenvolvedor-Web-Full-Stack-Jr
 
 Neste curso aprendi a desenvolver web sites com
-HTML, CSS, JavaScript, AJAX, JSON, Bootstrap, WordPress, PHP, MySQL e Bootstrap + jQuery.
+HTML, CSS, JavaScript, AJAX, JSON, WordPress, PHP, MySQL e Bootstrap + jQuery.
 
 Foi um curso prático de desenvolvimento web full stack para iniciante, onde aprendi a criar sites otimizados e sistemas web modernos, utilizando recursos básicos e intermediários.
 Durante o curso foi desenvolvido 8 miniprojetos de websites, mas sem deixar de lado toda a base teórica essencial, que vai desde projeto de site e navegadores, até hospedagem e SEO. 
